@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Res } from '@nestjs/common';
-import { Response } from 'express';
+import type { Response } from 'express';
 import { AppService } from './app.service';
 
 @Controller()
@@ -31,6 +31,11 @@ export class AppController {
   @Get('/api/health')
   getHealth() {
     return { status: 'ok', timestamp: new Date().toISOString() };
+  }
+
+  @Get('/status')
+  async getStatusAlias() {
+    return this.getStatus();
   }
 
   @Get('/api/status')
