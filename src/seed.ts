@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { Greeting } from './entities/greeting.entity.js';
+import { Greeting } from './entities/greeting.entity';
 
 const GREETINGS = [
   { message: 'Hello, World!', language: 'English' },
