@@ -69,12 +69,6 @@ zerops:
           port: 3000
           path: /api/health
 
-      verticalAutoscaling:
-        # V8 GC needs headroom — reserve ~50% of minRam as
-        # free to absorb traffic spikes without OOM restarts.
-        minRam: 0.25
-        minFreeRamGB: 0.125
-
   # Development setup — deploy full source for interactive
   # development via SSH. Container stays idle until the
   # developer starts the app manually.
