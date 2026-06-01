@@ -115,8 +115,8 @@ zerops:
         DB_USER: ${db_user}
         DB_PASS: ${db_password}
 
-      # Container stays idle — SSH in and run:
+      # No run.start — the dynamic dev container stays up as a
+      # workspace on its own, so SSH in and run the process by hand:
       #   npm run start:dev  (NestJS watch mode with hot-reload)
       # or
       #   npm run start      (single run via nest start)
-      start: zsc noop --silent
