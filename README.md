@@ -137,11 +137,11 @@ zerops:
         DB_USER: ${db_user}
         DB_PASS: ${db_password}
 
-      # Container stays idle — SSH in and run:
+      # No run.start — the dynamic dev container stays up as a
+      # workspace on its own, so SSH in and run the process by hand:
       #   npm run start:dev  (NestJS watch mode with hot-reload)
       # or
       #   npm run start      (single run via nest start)
-      start: zsc noop --silent
 ```
 
 ### 2. Trust proxy and bind `0.0.0.0`
@@ -167,7 +167,6 @@ username: process.env.DB_USER,
 password: process.env.DB_PASS,
 database: process.env.DB_NAME,
 ```
-
 <!-- #ZEROPS_EXTRACT_END:integration-guide# -->
 
 <!-- #ZEROPS_EXTRACT_START:knowledge-base# -->
@@ -177,5 +176,4 @@ database: process.env.DB_NAME,
 - **TypeORM `synchronize: true` in production** — never use `synchronize: true` in production as it auto-modifies the schema on every startup. Use a separate migration script executed via `initCommands` with `zsc execOnce` to ensure safe, one-time schema changes per deploy.
 - **NestJS listens on `localhost` by default** — the `app.listen(port)` call without an explicit host binds to `127.0.0.1`. On Zerops, the L7 balancer routes to the container's VXLAN IP, so you must explicitly pass `'0.0.0.0'` as the second argument or the container returns 502.
 - **`ts-node` needs devDependencies** — the dev setup uses `npx ts-node` for migration/seed scripts, which requires TypeScript and ts-node in node_modules. The dev `buildCommands` uses `npm install` (not `npm ci --omit=dev`) specifically for this reason.
-
 <!-- #ZEROPS_EXTRACT_END:knowledge-base# -->
