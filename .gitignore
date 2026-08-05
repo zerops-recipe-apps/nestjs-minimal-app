@@ -1,23 +1,43 @@
-# compiled output
-/dist
+# Dependencies
+node_modules/
+.npm-cache/
 
-# dependencies
-/node_modules
+# Build / cache
+dist/
+.nuxt/
+.output/
+.angular/
+*.tsbuildinfo
+.turbo/
 
-# IDE
-/.idea
-.DS_Store
-/.vscode
-
-# env files
+# Environment (secrets — never commit)
 .env
 .env.*
 !.env.example
 
-# debug
-npm-debug.log
-yarn-debug.log
-yarn-error.log
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# coverage
-/coverage
+# Testing
+coverage/
+
+# Platform CLI metadata
+.vercel/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.swp
+*.swo
+.vscode/*
+!.vscode/extensions.json
+
+# TLS / keys
+*.pem
+
