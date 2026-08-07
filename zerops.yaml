@@ -120,3 +120,4 @@ zerops:
       #   npm run start:dev  (NestJS watch mode with hot-reload)
       # or
       #   npm run start      (single run via nest start)
+      start: zsc noop --silent
