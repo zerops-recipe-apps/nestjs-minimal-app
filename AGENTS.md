@@ -1,6 +1,6 @@
 # nestjs-minimal-app
 
-Minimal NestJS 11 recipe with PostgreSQL via TypeORM, running on Zerops `nodejs@22` with migrations and seed gated by `zsc execOnce` per deploy version.
+Minimal NestJS 12 recipe with PostgreSQL via TypeORM, running on Zerops `nodejs@22` with migrations and seed gated by `zsc execOnce` per deploy version.
 
 ## Zerops service facts
 
