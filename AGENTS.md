@@ -1,12 +1,12 @@
 # nestjs-minimal-app
 
-Minimal NestJS 12 recipe with PostgreSQL via TypeORM, running on Zerops `nodejs@22` with migrations and seed gated by `zsc execOnce` per deploy version.
+Minimal NestJS 12 recipe with PostgreSQL via TypeORM, running on Zerops `nodejs@24` with migrations and seed gated by `zsc execOnce` per deploy version.
 
 ## Zerops service facts
 
 - HTTP port: `3000`
 - Siblings: `db` (PostgreSQL) — env: `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASS`, `DB_NAME`
-- Runtime base: `nodejs@22`
+- Runtime base: `nodejs@24`
 
 ## Zerops dev
 
@@ -19,6 +19,7 @@ Minimal NestJS 12 recipe with PostgreSQL via TypeORM, running on Zerops `nodejs@
 
 ## Notes
 
+- Prod build uses `npm ci --include=dev` then `npm prune --omit=dev` — devDependencies (`@nestjs/cli`, TypeScript) are required at build time but stripped before deploy.
 - Never create `.env` files — Zerops injects env vars at the OS level; a `.env` file shadows them with empty values.
 - The app must bind `0.0.0.0`, not `localhost` — the L7 balancer routes to the container's VXLAN IP.
 - Migrations and seed run via `zsc execOnce ${appVersionId}` so only one container runs them per deploy version.
